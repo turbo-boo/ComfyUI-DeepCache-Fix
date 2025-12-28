@@ -134,7 +134,7 @@ class DeepCache_Fix:
             # 初始化模型的输入和配置。
             x = xc
             timesteps = t
-            y = None if y is None else y.to(dtype)
+            y = None if y is None else y.to(device=x.device, dtype=dtype)
             transformer_options["original_shape"] = list(x.shape)
             transformer_options["current_index"] = 0
             transformer_patches = transformer_options.get("patches", {})
