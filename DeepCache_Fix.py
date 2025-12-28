@@ -120,8 +120,8 @@ class DeepCache_Fix:
             context = c_crossattn
             xc = xc.to(dtype)
             # 将时间步转换为指定的数据类型。
-            t = new_model.model.model_sampling.timestep(t).float()
-            context = context.to(dtype)
+            t = new_model.model.model_sampling.timestep(t).float().to(xc.device)
+            context = context.to(dtype=dtype, device=xc.device)
 
             # 将所有额外的条件转换为指定的数据类型。
             extra_conds = {}
